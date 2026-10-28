@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Race-to GAMESCOM</title>
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div id="loading">LOADING GLASS…</div>
+
+    <!-- Transient gameplay overlays only. The main HUD (score / run timer / level /
+         thrust bar) is built in code by ui/cl-hud.ts. -->
+    <div id="hud" class="hide">
+      <div id="event"></div>
+      <div id="pathBlocked">PATH AHEAD BLOCKED</div>
+    </div>
+
+    <div id="flash"></div>
+    <div id="vignette"></div>
+
+    <div id="start" class="screen hide">
+      <div class="title-stack" aria-label="Race-to GAMESCOM">
+        <div class="title-crystal-line">RACE-TO</div>
+        <div class="title-drifter">GAMESCOM</div>
+      </div>
+      <div class="title-btn-row">
+        <button class="cl-btn" id="playBtn">PLAY</button>
+        <button class="cl-btn cl-btn--ghost" id="testFlightBtn">TEST FLIGHT</button>
+        <button class="cl-btn cl-btn--ghost" id="howBtn">HOW TO PLAY</button>
+      </div>
+    </div>
+
+    <div id="pause" class="screen hide">
+      <div class="logo">
+        <div class="smash" style="font-size: 54px">PAUSED</div>
+      </div>
+      <p>Catch your breath. Your run continues right where you left it.</p>
+      <button class="btn" id="resumeBtn">RESUME</button>
+      <button class="btn" id="titleBtn">QUIT TO TITLE</button>
+      <p style="font-size: 12px; opacity: 0.6">
+        Press <b>P</b> or <b>Esc</b> to pause/resume anytime.
+      </p>
+    </div>
+
+    <div id="win" class="screen hide">
+      <div class="logo">
+        <div class="smash" id="winTitle" style="font-size: 54px">ARRIVED</div>
+      </div>
+      <p id="winStats">You reached Gamescom.</p>
+      <button class="btn" id="restartBtn">RUN AGAIN</button>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

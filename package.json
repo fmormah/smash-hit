@@ -1,0 +1,22 @@
+{
+  "name": "race-to-gamescom",
+  "version": "1.0.0",
+  "description": "Race-to GAMESCOM — endless glass-weaving racer (Three.js + Vite)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "node smoketest.mjs"
+  },
+  "dependencies": {
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.160.0",
+    "puppeteer-core": "^23.11.1",
+    "typescript": "^5.4.5",
+    "vite": "^5.4.11"
+  }
+}
