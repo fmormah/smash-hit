@@ -1,8 +1,4 @@
-import {
-  CHAPTERS,
-  GAMESCOM_ALL_CHAPTERS,
-  GAMESCOM_PLAY_CHAPTERS,
-} from "./chapters";
+import defaultState from "./default-state.json";
 
 /**
  * Live, mutable tunables driven by the F9 dev panel. Systems read from here instead of
@@ -162,159 +158,15 @@ export interface DevSettings {
 }
 
 /** Baked playtest defaults (also the target of "Reset defaults"). */
-export const DEFAULT_DEV: DevSettings = {
-  baseSpeed: 40,
-  accel: 0.004,
-  maxBonus: 70,
-  turnMax: 0.39,
-  elevMax: 0.23,
-  stretchMin: 91,
-  stretchMax: 169,
-  straightChance: 0.75,
-  bank: 1.0,
-  bankSmooth: 3.5,
-  lookAhead: 14,
-  waveSpacing: 6,
-  zoneOverride: -1,
-  splashZoneOverride: 1,
-  splashZoneCycle: true,
-  splashZoneCycleInterval: 5,
-  manualRoll: 0,
-  steerSpeed: 2.5,
-  keyboardSteerSensitivity: 1,
-  mobileJoystickSensitivity: 1,
-  speedSteerMul: 1, // 1 = steer speed unaffected by forward speed (current feel)
-  mobileSpeedReachMul: 1, // 1 = touch reach unaffected by forward speed (current feel)
-  fragVolume: 2.7,
-  glassOpacity: 0.9,
-  bloomIntensity: 0.5, // toned down from 1.0 to curb blow-out / readability (dev-panel adjustable 0–3×)
-  speedZoom: -0.6,
-  waveBySpeed: true,
-  waveSpeedMin: 5,
-  waveSpeedMax: 11,
-  waveSpeedRate: 1.55,
-  worldScale: 2.028667199291175,
-  worldScaleAuto: true,
-  worldScaleMin: 2,
-  worldScaleMax: 4,
-  worldScaleRate: 0.3,
-  steerMulX: 1.2,
-  steerMulUp: 14,
-  steerMulDown: 6.8,
-  optokineticReflex: false,
-  pickupMagnetRadius: 0, // 0 = magnet off (player must fly through pickups as before)
-  showPickupField: false,
-  showBounds: false,
-  hitX: 0.2,
-  hitY: 0.35,
-  hitZ: 2.7,
-  showHitBox: false,
-  showRideLine: false,
-  rideFromPlayer: true,
-  scoutDist: 112,
-  blockClearance: 2.5,
-  blockWarnDist: 80,
-  heroPosX: 0,
-  heroPosY: -0.35, // shifted closer to 0 (vertical screen center) from -0.95
-  heroPosZ: 0,
-  heroRotXDeg: 0,
-  heroRotYDeg: 0,
-  heroRotZDeg: 0,
-  heroContRotXDeg: 0,
-  heroContRotYDeg: 0,
-  heroContRotZDeg: 0,
-  heroContScale: 0.88,
-  aimNoseToCentre: true,
-  crashFreeze: 0.65,
-  crashInvuln: 3.0,
-  invulnFlashHz: 10,
-  crashSpeedLoss: 0.65,
-  boosterX: 0.5,
-  boosterY: -1.86,
-  boosterZ: 0.62,
-  levelLength: 800,
-  infiniteLevels: true,
-  infiniteGated: false, // gateless by default (matches the current continuous free flight)
-  generalLevelOrder: CHAPTERS.map((_, i) => i),
-  generalLevelActive: CHAPTERS.map(() => true),
-  gamescomLevelOrder: GAMESCOM_ALL_CHAPTERS.map((_, i) => i),
-  // Google levels active by default; the older/general biomes are listed but OFF
-  // (tick them on to fold them into the GamesCom progression / cycle).
-  gamescomLevelActive: GAMESCOM_ALL_CHAPTERS.map(
-    (_, i) => i < GAMESCOM_PLAY_CHAPTERS.length,
-  ),
-  boostArmour: true,
-  boostArmourRequired: 1,
-  boostArmourWindow: 4.5,
-  boostsForWorldRoll: 6, // default to 6 boosts in a row
-  crystalsForComet: 2, // stack 2 crystal rings to trigger the comet effect
-  boostArmourAlwaysOff: false,
-  boostArmourAlwaysOn: false,
-  shieldOffsetX: 0,
-  shieldOffsetY: -1,
-  shieldOffsetZ: 0,
-  shieldScale: 1,
-  boostArmourFragMultiplier: 1.75,
-  boostArmourFragSpeed: 26.0,
-  missileCount: 50, // default missile salvo to 50
-  missileSpeed: 142.5, // 95 * 1.5 = 142.5
-  missileExplosions: true,
-  missileConeAngle: 21.0,
-  missileConeRange: 140.0,
-  showMissileCone: false,
-  spinOnRing: false, // barrel-roll/spin on ring pass disabled by default
-  bgmVolume: 0.45,
-  sfxVolume: 0.2,
-  masterVolume: 1.0, // master volume scale multiplier (defaults to 1.0x / 100%)
-  orbTrailWidth: 0.25,
-  orbTrailDecay: 8,
-  gateBoostDuration: 6.5,
-  shieldTrailType: 1,
-  shieldTrailWidth: 1.6,
-  shieldTrailDecay: 3,
-  keepLevel: false,
-  camFollow: 0.6,
-  camLatFollow: 0,
-  camFollowTurn: 0.6, // = camFollow until tuned
-  camLatFollowTurn: 0, // = camLatFollow until tuned
-  camHeight: 0.5,
-  camBack: 14.5,
-  camShoulder: 0,
-  camLookAhead: 120,
-  camPitchDeg: 0,
-  camYawDeg: 0,
-  camZoom: 2,
-  sunLateral: 0,
-  sunHeight: 1.2,
-  sunDistance: 150,
-  sunDynamic: false,
-  sunDynamicStrength: 0.35,
-  floorLightEnabled: false,
-  floorGlowX: 0,
-  floorGlowY: 3,
-  floorGlowZ: 5,
-  floorGlowReach: 80,
-  floorReflect: 0.3,
-  floorGlowIntensity: 1,
-  obstacleEnabled: {},
-  highlightColor: 0x6cf0ff,
-  highlightThickness: 0, // off by default; GamesCom forces it on (see getGamesComRules)
-  highlightSameAsMissileRange: true,
-  highlightRange: 140,
-  obstacleColor: 0x6b6f73,
-  speedDynamicColors: false,
-};
+export const DEFAULT_DEV: DevSettings = structuredClone(defaultState.dev);
 
 export const dev: DevSettings = {
-  ...DEFAULT_DEV,
-  obstacleEnabled: { ...DEFAULT_DEV.obstacleEnabled },
+  ...structuredClone(DEFAULT_DEV),
 };
 
 /** Restore every tunable to its baked default (used by the dev panel). */
 export function resetDev() {
-  Object.assign(dev, DEFAULT_DEV, {
-    obstacleEnabled: { ...DEFAULT_DEV.obstacleEnabled },
-  });
+  Object.assign(dev, structuredClone(DEFAULT_DEV));
   if (gamescom.enabled) {
     const snap: Record<string, unknown> = {};
     for (const k of GAMESCOM_RULE_KEYS) snap[k] = dev[k];
@@ -366,39 +218,8 @@ export interface GamesComConfig {
   playSpeedBoostDifficultyMul: number;
 }
 export const gamescom: GamesComConfig = {
-  enabled: false,
-  runMode: "testFlight",
-  canyonWallGap: 22,
-  canyonWallHeight: 12,
-  canyonMirrorSlopes: true,
-  canyonSlopeDeg: 43,
-  canyonLeftSlopeDeg: 43,
-  canyonRightSlopeDeg: 43,
-  canyonMirrorCurves: true,
-  canyonCurveFlattenTop: true,
-  canyonCurve: 0,
-  canyonLeftCurve: 0,
-  canyonRightCurve: 0,
-  canyonDrawDistanceScale: 1.5,
-  canyonGridLines: true,
-  canyonGridOpacity: 0.2,
-  canyonFloorColor: 0xc2c2c2,
-  canyonWallColor: 0x44484e,
-  canyonSkyMid: 0x5a5a5a,
-  playerReflectionOpacity: 0.1,
-  bloomIntensity: 0.08,
-  heroContScale: 1.6,
-  boosterY: -1.26,
-  ringOrbScale: 2.5,
-  steerMulX: -1.05,
-  steerMulUp: 15,
-  steerMulDown: 5.7,
-  playWallGapDifficultyMul: 1,
-  playSlopeDifficultyMul: 1,
-  playObstacleDifficultyMul: 1,
-  playBaseSpeedDifficultyMul: 1,
-  playAccelerationDifficultyMul: 1,
-  playSpeedBoostDifficultyMul: 1,
+  ...defaultState.gamescom,
+  runMode: defaultState.gamescom.runMode as GamesComConfig["runMode"],
 };
 
 export const GAMESCOM_RULE_KEYS = [
@@ -472,4 +293,7 @@ export function applyGamesComRules() {
   if (gamescom.enabled) Object.assign(dev, getGamesComRules());
 }
 
-setGamesComEnabled(true);
+if (gamescom.enabled) {
+  gamescom.enabled = false;
+  setGamesComEnabled(true);
+}

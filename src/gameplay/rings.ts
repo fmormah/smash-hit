@@ -1,3 +1,4 @@
+import defaultState from "../config/default-state.json";
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { CULL_BEHIND, DISTANCE_SCALE, EYE_Y, SPAWN_AHEAD } from '../config/constants';
@@ -25,7 +26,7 @@ new GLTFLoader()
  * electron orbs trailing ribbons, in the zone's pickup colour. Taking it grants a
  * speed boost that lasts to the end of the zone (and big points).
  */
-export const RING_COLORS = [0xff5a5a, 0x4aa8ff, 0xffd24a, 0x47e08a]; // R B Y G
+export const RING_COLORS = [...defaultState.colors.ringColors]; // R B Y G
 const RING_SPACING = 64; // z-units between rings
 const RING_RADIUS = 3.6;
 const CRYSTAL_RADIUS = RING_RADIUS * 1.25; // 25% bigger

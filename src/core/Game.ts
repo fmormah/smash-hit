@@ -11,7 +11,6 @@ import {
   applyGamesComRules,
   dev,
   gamescom,
-  setGamesComEnabled,
   type GamesComConfig,
 } from "../config/runtime";
 import {
@@ -642,7 +641,7 @@ export class Game {
 
   private configureGamesComRun(runMode: GamesComConfig["runMode"]) {
     gamescom.runMode = runMode;
-    setGamesComEnabled(true);
+    if (!gamescom.enabled) return;
     applyGamesComRules();
     applyGamesComObstacleDefaults();
     dev.infiniteLevels = runMode === "testFlight";

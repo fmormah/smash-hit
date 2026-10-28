@@ -1,3 +1,5 @@
+import defaultState from "./default-state.json";
+
 /** Architectural signature of a chapter — drives the environment built per segment. */
 export type ChapterStyle =
   | "enclosed"
@@ -329,13 +331,13 @@ export const CHAPTERS: Chapter[] = [
  */
 export const GAMESCOM_CANYON: Chapter = {
   name: "GAMESCOM CANYON",
-  top: 0x151515,
-  mid: 0x5a5a5a,
-  horizon: 0xd2d2d2,
-  accent: 0xf2f2f2,
-  light: 0xffffff,
-  floor: 0xc2c2c2,
-  wall: 0x44484e,
+  top: defaultState.colors.gamescomCanyon.top,
+  mid: defaultState.colors.gamescomCanyon.mid,
+  horizon: defaultState.colors.gamescomCanyon.horizon,
+  accent: defaultState.colors.gamescomCanyon.accent,
+  light: defaultState.colors.gamescomCanyon.light,
+  floor: defaultState.colors.gamescomCanyon.floor,
+  wall: defaultState.colors.gamescomCanyon.wall,
   style: "canyon",
   weights: {}, // cube-obstacle / fuel-orb pattern weights get tuned here as rules evolve
 };
